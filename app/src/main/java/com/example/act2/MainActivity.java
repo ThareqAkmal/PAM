@@ -2,6 +2,7 @@ package com.example.act2;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -33,10 +34,41 @@ public class MainActivity extends AppCompatActivity {
 
                 password = edpass.getText().toString();
 
-                Toast t = Toast.makeText(getApplicationContext(),
-                        "email anda: " + nama + " dan password anda: " + password+"", Toast.LENGTH_LONG);
+                String email = "admin@mail.com";
 
-                t.show();
+                String pass = "123";
+
+                if(nama.isEmpty() || password.isEmpty()) {
+
+                    Toast t = Toast.makeText(getApplicationContext(),
+                            "mohon isi dulu bro email sama passwordnya!", Toast.LENGTH_LONG);
+
+                    t.show();
+                }else {
+
+                    if(nama.equals(email) && (password.equals(pass))) {
+                        Toast t = Toast.makeText(getApplicationContext(), "Login Sukses", Toast.LENGTH_LONG);
+
+                        t.show();
+
+                        Bundle bandel = new Bundle();
+
+                        bandel.putString("a", nama.trim());
+
+                        bandel.putString("b", password.trim());
+
+                        Intent inten = new Intent(getApplicationContext(), ActivityHasil.class);
+
+                        inten.putExtras(bandel);
+
+                        startActivity(inten);
+                    }else{
+
+                        Toast t = Toast.makeText(getApplicationContext(), "Login Gagal", Toast.LENGTH_LONG);
+
+                        t.show();
+                    }
+                }
             }
         });
     }
