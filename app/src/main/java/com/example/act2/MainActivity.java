@@ -75,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
 
                         bandel.putString("b", password.trim());
 
-                        Intent inten = new Intent(getApplicationContext(), ActivityHasil.class);
+                        Intent inten = new Intent(getApplicationContext(), Home_Activity.class);
 
                         inten.putExtras(bandel);
 

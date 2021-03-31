@@ -9,10 +9,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".daftarActivity"
-            android:parentActivityName=".MainActivity">
+        <activity android:name=".ActivityLihatData"
+            android:parentActivityName=".Home_Activity">
 
         </activity>
+        <activity android:name=".Home_Activity"
+            android:parentActivityName=".MainActivity"/>
+        <activity
+            android:name=".daftarActivity"
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".ActivityHasil"
             android:label="Login Berhasil"
