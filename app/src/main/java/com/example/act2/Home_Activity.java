@@ -4,9 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.PopupMenu;
 import android.widget.Toast;
@@ -16,6 +19,8 @@ import java.util.ArrayList;
 public class Home_Activity extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener {
 
     private ListView list;
+
+    EditText sercing;
 
     private ListViewAdapter adapter;
 
@@ -36,6 +41,7 @@ public class Home_Activity extends AppCompatActivity implements PopupMenu.OnMenu
                 "Bagus", "Adiet", "Fariz", "Nizar", "Ghozi"};
 
         list = findViewById(R.id.listkontak);
+        sercing = findViewById(R.id.Edsearch);
 
         classNamaArrayList = new ArrayList<>();
 
@@ -48,6 +54,23 @@ public class Home_Activity extends AppCompatActivity implements PopupMenu.OnMenu
         adapter = new ListViewAdapter(this);
 
         list.setAdapter(adapter);
+
+        sercing.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                Home_Activity.this.adapter.getFilter().filter(charSequence);
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
 
         list.setOnItemClickListener(new AdapterView.OnItemClickListener(){
 
